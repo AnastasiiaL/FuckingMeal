@@ -51,8 +51,6 @@ public class FileSystemProductRepository implements IProductRepository {
             String line = null;
             while ((line = reader.readLine()) != null) {
                 String[] fields = line.split(SEPARATOR);
-                //Product product = new Product(fields[0], fields[1],new Double(fields[2]),new Double(fields[3]), shop);
-               // result.add(product);
             }
         } catch (Exception e) {
 
