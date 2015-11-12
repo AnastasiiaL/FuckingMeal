@@ -58,9 +58,9 @@ public class StepProduct extends AbstractStep {
         System.out.println("Add a product brand:  ");
         String brand = readConsoleValue();
         System.out.println("Add a product amount:  ");
-        float ammount = Double.parseDouble(readConsoleValue());
+        double ammount = Double.parseDouble(readConsoleValue());
         System.out.println("Add a product price:  ");
-        float price = Double.parseDouble(readConsoleValue());
+        double price = Double.parseDouble(readConsoleValue());
         System.out.println("Select a shop:");
         Shop shop = addShop();
         Product product = new Product(name, brand, ammount, price, shop);
