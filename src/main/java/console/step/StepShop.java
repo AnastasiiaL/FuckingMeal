@@ -26,7 +26,7 @@ public class StepShop extends AbstractStep {
                 break;
             case 2:
                 for (Shop shop : shopRepository.shopList()){
-                    System.out.println(shop.name + " " + shop.location);
+                    System.out.println(shop.getName() + " " + shop.getLocation());
                 }
                 break;
             case 3:

@@ -22,10 +22,10 @@ public class ProductDbRepository extends AbstractDbRepository implements IProduc
         try {
             ps = connection.prepareStatement("INSERT INTO product (id, brand, product_name, amount, amount_type) values (?,?,?,?,?)");
             ps.setInt(1, getMaxID()+1);
-            ps.setString(2, product.brand);
-            ps.setString(3, product.name);
-            ps.setDouble(4, product.amount);
-            ps.setString(5, product.amount_type);
+            ps.setString(2, product.getBrand());
+            ps.setString(3, product.getName());
+            ps.setDouble(4, product.getAmount());
+            ps.setString(5, product.getAmount_type());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -62,7 +62,7 @@ public class ProductDbRepository extends AbstractDbRepository implements IProduc
     public Product findProduct(String productName) {
         List<Product> list = productList();
         for (Product product : list) {
-            if (product.name.equals(productName)) {
+            if (product.getName().equals(productName)) {
                 System.out.println(product.toString());
                 return product;
             }

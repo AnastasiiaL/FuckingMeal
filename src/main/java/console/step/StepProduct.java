@@ -39,7 +39,7 @@ public class StepProduct extends AbstractStep {
                 break;
             case 2:
                 for (Product product : productRepository.productList()){
-                    System.out.println(product.name);
+                    System.out.println(product.getName());
                 }
                 break;
             case 3:
