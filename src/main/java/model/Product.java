@@ -6,11 +6,14 @@ import java.util.List;
  * Created by ����� on 13.09.2015.
  */
 public class Product extends Identifier {
-    public String brand;
-    public String name;
-    public double amount;
-    public String amount_type;
+    private String brand;
+    private String name;
+    private double amount;
+    private String amount_type;
     private List<ShopProduct> shops;
+
+    public Product() {
+    }
 
     public Product(int index, String brand, String name, double amount, String amount_type){
        this.id = index;

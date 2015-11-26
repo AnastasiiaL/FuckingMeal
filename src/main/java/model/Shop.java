@@ -1,13 +1,18 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.List;
 
 /**
  * Created by ����� on 17.09.2015.
  */
+@Entity
+@Table
 public class Shop extends Identifier {
-    public String name;
-    public String location;
+    private String name;
+    private String location;
     private List<ShopProduct> products;
 
     public Shop() {}
@@ -30,6 +35,7 @@ public class Shop extends Identifier {
         this.products = products;
     }
 
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -38,6 +44,7 @@ public class Shop extends Identifier {
         this.name = name;
     }
 
+    @Column(name="location")
     public String getLocation() {
         return location;
     }

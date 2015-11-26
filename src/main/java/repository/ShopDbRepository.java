@@ -23,8 +23,8 @@ public class ShopDbRepository extends AbstractDbRepository implements IShopRepos
         try {
             ps = connection.prepareStatement("INSERT INTO shop (id,name,location) values (?,?,?)");
             ps.setInt(1, getMaxID()+1);
-            ps.setString(2, shop.name);
-            ps.setString(3, shop.location);
+            ps.setString(2, shop.getName());
+            ps.setString(3, shop.getLocation());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -61,7 +61,7 @@ public class ShopDbRepository extends AbstractDbRepository implements IShopRepos
     public Shop findShop(String shopName) {
         List<Shop> list = shopList();
         for (Shop shop : list) {
-            if (shop.name.equals(shopName)) {
+            if (shop.getName().equals(shopName)) {
                 System.out.println(shop.toString());
                 return shop;
             }
