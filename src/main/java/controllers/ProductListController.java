@@ -18,7 +18,7 @@ public class ProductListController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
-        //model.addAttribute("shops", shopDAO.shopList());
+        //model.addAttribute("shops", shopDAO.list());
         return "shoplist";
     }
 

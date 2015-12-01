@@ -15,7 +15,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name ="shop")
-public class Shop  {
+public class Shop implements Identifiable {
     @Id
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
@@ -41,6 +41,7 @@ public class Shop  {
     public Shop(String name, String location) {
        this(-1, name, location);
     }
+
     public int getId() {
         return id;
     }
