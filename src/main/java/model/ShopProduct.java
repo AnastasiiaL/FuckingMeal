@@ -1,11 +1,24 @@
 package model;
 
+import javax.persistence.*;
+import java.io.Serializable;
+
 /**
  * Created by Кроха on 20.11.2015.
  */
-public class ShopProduct {
+@Entity
+@Table(name ="shop_product")
+public class ShopProduct implements Serializable{
+    @Id
+    @ManyToOne
+    @JoinColumn(name="id_product")
     private Product product;
+    @Id
+    @ManyToOne
+    @JoinColumn(name="id_shop")
     private Shop shop;
+
+    @Column(name="price")
     private double price;
 
     public double getPrice() {

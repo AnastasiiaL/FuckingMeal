@@ -78,25 +78,26 @@ public class StepProduct extends AbstractStep {
 
     private Shop addShop() {
         IShopRepository shopRepository = new ShopDbRepository();
-        List<Shop> list = shopRepository.shopList();
-        int i = 1;
-        HashMap<Integer, Shop> mapShop = new HashMap<>();
-        for (Shop shop : list){
-            System.out.println(i + " - " + shop);
-            mapShop.put(i, shop);
-            i++;
-        }
-        System.out.println(++i + "Add a new one");
-        int selection = Integer.parseInt(readConsoleValue());
-        if (selection == i){
-            Shop shop = new StepShop().getShop();
-            shopRepository.add(shop);
-            return shop;
-        }
-        else {
-            Shop shop = mapShop.get(selection);
-            return shop;
-        }
+//        List<Shop> list = shopRepository.shopList();
+//        int i = 1;
+//        HashMap<Integer, Shop> mapShop = new HashMap<>();
+//        for (Shop shop : list){
+//            System.out.println(i + " - " + shop);
+//            mapShop.put(i, shop);
+//            i++;
+//        }
+//        System.out.println(++i + "Add a new one");
+//        int selection = Integer.parseInt(readConsoleValue());
+//        if (selection == i){
+//            Shop shop = new StepShop().getShop();
+//            shopRepository.add(shop);
+//            return shop;
+//        }
+//        else {
+//            Shop shop = mapShop.get(selection);
+//            return shop;
+//        }
+        return null;
     }
 
 
