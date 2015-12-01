@@ -1,19 +1,35 @@
 package model;
 
-import javax.persistence.Column;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.Cache;
+
+import javax.persistence.*;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.List;
+import java.util.Set;
 
 /**
- * Created by ����� on 17.09.2015.
+ * Created by Anastasia on 17.09.2015.
  */
 @Entity
-@Table
-public class Shop extends Identifier {
+@Table(name ="shop")
+public class Shop  {
+    @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
+    @Column(name="id")
+    private int id;
+
+    @Column(name="name")
     private String name;
+
+    @Column(name="location")
     private String location;
-    private List<ShopProduct> products;
+
+    @OneToMany(mappedBy="shop", cascade=CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private Set<ShopProduct> products;
 
     public Shop() {}
 
@@ -22,20 +38,25 @@ public class Shop extends Identifier {
         this.name = name;
         this.location = location;
     }
-
     public Shop(String name, String location) {
        this(-1, name, location);
     }
+    public int getId() {
+        return id;
+    }
 
-    public List<ShopProduct> getProducts() {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Set<ShopProduct> getProducts() {
         return products;
     }
 
-    public void setProducts(List<ShopProduct> products) {
+    public void setProducts(Set<ShopProduct> products) {
         this.products = products;
     }
 
-    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -44,7 +65,6 @@ public class Shop extends Identifier {
         this.name = name;
     }
 
-    @Column(name="location")
     public String getLocation() {
         return location;
     }

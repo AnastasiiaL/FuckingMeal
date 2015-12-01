@@ -1,30 +1,53 @@
 package model;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.List;
 
 /**
- * Created by ����� on 13.09.2015.
+ * Created by Anastasia on 13.09.2015.
  */
-public class Product extends Identifier {
+@Entity
+@Table(name ="product")
+public class Product {
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id")
+    private int id;
+    @Column(name="brand")
     private String brand;
+    @Column(name="product_name")
     private String name;
+    @Column(name="amount")
     private double amount;
+    @Column(name="amount_type")
     private String amount_type;
+    @OneToMany(mappedBy="product", cascade=CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<ShopProduct> shops;
 
     public Product() {
     }
 
-    public Product(int index, String brand, String name, double amount, String amount_type){
-       this.id = index;
+    public Product(int index, String brand, String name, double amount, String amount_type) {
+        this.id = index;
         this.name = name;
         this.brand = brand;
         this.amount = amount;
         this.amount_type = amount_type;
     }
 
-    public Product(String brand, String name, double amount, String amount_type){
+    public Product(String brand, String name, double amount, String amount_type) {
         this(-1, brand, name, amount, amount_type);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public List<ShopProduct> getShops() {
@@ -67,7 +90,8 @@ public class Product extends Identifier {
         this.amount_type = amount_type;
     }
 
-    @Override public String toString(){
+    @Override
+    public String toString() {
         return (this.brand + ", " + this.name + ", " + this.amount + ", " + this.amount_type);
     }
 }

@@ -3,6 +3,7 @@ package repository;
 
 import model.Shop;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -12,8 +13,6 @@ public interface IShopRepository {
     void add(Shop shop);
 
     List<Shop> shopList();
-
-    Shop findShop(String shopName);
 
     Shop findShop(int index);
 

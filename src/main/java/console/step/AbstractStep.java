@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Created by Кроха on 19.09.2015.
+ * Created by Anastasia on 19.09.2015.
  */
 public abstract class AbstractStep implements IStep {
     protected int getCommand() {

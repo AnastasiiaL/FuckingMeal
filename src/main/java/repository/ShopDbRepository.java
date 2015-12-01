@@ -57,7 +57,7 @@ public class ShopDbRepository extends AbstractDbRepository implements IShopRepos
         return result;
     }
 
-    @Override
+
     public Shop findShop(String shopName) {
         List<Shop> list = shopList();
         for (Shop shop : list) {

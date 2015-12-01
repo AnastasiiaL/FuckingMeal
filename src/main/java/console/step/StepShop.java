@@ -22,16 +22,16 @@ public class StepShop extends AbstractStep {
         switch (command)
         {
             case 1:
-                shopRepository.add(getShop());
+//                shopRepository.add(getShop());
                 break;
             case 2:
-                for (Shop shop : shopRepository.shopList()){
-                    System.out.println(shop.getName() + " " + shop.getLocation());
-                }
+//                for (Shop shop : shopRepository.shopList()){
+//                    System.out.println(shop.getName() + " " + shop.getLocation());
+//                }
                 break;
             case 3:
                 String shopName = getShopName();
-                shopRepository.findShop(shopName);
+//                shopRepository.findShop(shopName);
                 break;
             case 4:
                 shopName = getShopName();

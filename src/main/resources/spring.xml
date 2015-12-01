@@ -30,7 +30,24 @@
         <property name="user" value="root"/>
         <property name="password" value="3324447"/>
     </bean>
-    
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="datasource" />
+        <property name="annotatedClasses">
+            <list>
+                <value>model.Shop</value>
+                <value>model.Product</value>
+                <value>model.ShopProduct</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
+                <prop key="hibernate.show_sql">false</prop>
+            </props>
+        </property>
+    </bean>
 
 
 </beans>

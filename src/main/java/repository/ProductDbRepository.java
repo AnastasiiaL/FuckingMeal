@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by ����� on 10.11.2015.
+ * Created by Anastasia on 10.11.2015.
  */
 @Repository
 public class ProductDbRepository extends AbstractDbRepository implements IProductRepository {
