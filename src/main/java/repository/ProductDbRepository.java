@@ -58,7 +58,6 @@ public class ProductDbRepository extends AbstractDbRepository implements IProduc
         return result;
     }
 
-    @Override
     public Product find(String productName) {
         List<Product> list = list();
         for (Product product : list) {
