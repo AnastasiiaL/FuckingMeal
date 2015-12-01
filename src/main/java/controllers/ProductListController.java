@@ -1,6 +1,7 @@
 package controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,13 +14,14 @@ import repository.IProductRepository;
 @Controller
 @RequestMapping("/product")
 public class ProductListController {
+    @Qualifier("productDAOImpl")
     @Autowired
-    private IProductRepository productDbRepository;
+    private IProductRepository productDAO;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
-        //model.addAttribute("shops", shopDAO.list());
-        return "shoplist";
+        model.addAttribute("products", productDAO.list());
+        return "productlist";
     }
 
 }

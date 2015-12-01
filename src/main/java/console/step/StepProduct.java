@@ -41,7 +41,7 @@ public class StepProduct extends AbstractStep {
                 break;
             case 3:
                 String productName = getProductName();
-                productRepository.find(productName);
+                productRepository.find(3);
                 break;
             case 4:
                 productName = getProductName();
