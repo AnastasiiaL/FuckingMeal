@@ -12,7 +12,7 @@ import java.sql.SQLException;
  * Created by ����� on 30.10.2015.
  */
 public abstract class AbstractDbRepository {
- //   @Autowired
+    @Autowired
     protected MysqlConnectionPoolDataSource mysqlDS;
 
     public MysqlConnectionPoolDataSource getMysqlDS() {

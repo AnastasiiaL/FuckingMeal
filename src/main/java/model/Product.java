@@ -10,7 +10,7 @@ import java.util.List;
  */
 @Entity
 @Table(name ="product")
-public class Product {
+public class Product implements Identifiable{
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")

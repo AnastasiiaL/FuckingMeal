@@ -6,9 +6,6 @@ import repository.IProductRepository;
 import repository.IShopRepository;
 import repository.ShopDbRepository;
 
-import java.util.HashMap;
-import java.util.List;
-
 /**
  * Created by ����� on 19.09.2015.
  */
@@ -38,13 +35,13 @@ public class StepProduct extends AbstractStep {
                 productRepository.add(getMeal());
                 break;
             case 2:
-                for (Product product : productRepository.productList()){
+                for (Product product : productRepository.list()){
                     System.out.println(product.getName());
                 }
                 break;
             case 3:
                 String productName = getProductName();
-                productRepository.findProduct(productName);
+                productRepository.find(3);
                 break;
             case 4:
                 productName = getProductName();
@@ -78,7 +75,7 @@ public class StepProduct extends AbstractStep {
 
     private Shop addShop() {
         IShopRepository shopRepository = new ShopDbRepository();
-//        List<Shop> list = shopRepository.shopList();
+//        List<Shop> list = shopRepository.list();
 //        int i = 1;
 //        HashMap<Integer, Shop> mapShop = new HashMap<>();
 //        for (Shop shop : list){

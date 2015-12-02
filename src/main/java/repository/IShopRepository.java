@@ -9,14 +9,6 @@ import java.util.List;
 /**
  * Created by ����� on 17.09.2015.
  */
-public interface IShopRepository {
-    void add(Shop shop);
+public interface IShopRepository extends IAbstractRepository<Shop> {
 
-    List<Shop> shopList();
-
-    Shop findShop(int index);
-
-    void updateShop(Shop shop);
-
-    void delete(int id);
 }

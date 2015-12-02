@@ -34,7 +34,7 @@ public class ShopDbRepository extends AbstractDbRepository implements IShopRepos
     }
 
     @Override
-    public List<Shop> shopList() {
+    public List<Shop> list() {
         List<Shop> result = new ArrayList<>();
         Connection connection = getConnection();
         ResultSet rs = null;
@@ -59,7 +59,7 @@ public class ShopDbRepository extends AbstractDbRepository implements IShopRepos
 
 
     public Shop findShop(String shopName) {
-        List<Shop> list = shopList();
+        List<Shop> list = list();
         for (Shop shop : list) {
             if (shop.getName().equals(shopName)) {
                 System.out.println(shop.toString());
@@ -70,8 +70,8 @@ public class ShopDbRepository extends AbstractDbRepository implements IShopRepos
     }
 
     @Override
-    public Shop findShop(int index) {
-        List<Shop> list = shopList();
+    public Shop find(int index) {
+        List<Shop> list = list();
         for (Shop shop : list) {
             if (shop.getId()==index) {
                 return shop;
@@ -81,7 +81,7 @@ public class ShopDbRepository extends AbstractDbRepository implements IShopRepos
     }
 
     @Override
-    public void updateShop(Shop shop) {
+    public void update(Shop shop) {
         if (shop.getId()==0){
             add(shop);
         }

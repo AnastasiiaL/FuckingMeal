@@ -35,7 +35,7 @@ public class ProductDbRepository extends AbstractDbRepository implements IProduc
     }
 
     @Override
-    public List<Product> productList() {
+    public List<Product> list() {
         List<Product> result = new ArrayList<>();
         Connection connection = getConnection();
         ResultSet rs = null;
@@ -58,9 +58,8 @@ public class ProductDbRepository extends AbstractDbRepository implements IProduc
         return result;
     }
 
-    @Override
-    public Product findProduct(String productName) {
-        List<Product> list = productList();
+    public Product find(String productName) {
+        List<Product> list = list();
         for (Product product : list) {
             if (product.getName().equals(productName)) {
                 System.out.println(product.toString());
@@ -71,14 +70,19 @@ public class ProductDbRepository extends AbstractDbRepository implements IProduc
     }
 
     @Override
-    public Product findProduct(int index) {
-        List<Product> list = productList();
+    public Product find(int index) {
+        List<Product> list = list();
         for (Product product : list) {
             if (product.getId()==index) {
                 return product;
             }
         }
         return null;
+    }
+
+    @Override
+    public void update(Product entity) {
+
     }
 
     @Override

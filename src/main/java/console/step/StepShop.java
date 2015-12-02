@@ -25,13 +25,13 @@ public class StepShop extends AbstractStep {
 //                shopRepository.add(getShop());
                 break;
             case 2:
-//                for (Shop shop : shopRepository.shopList()){
+//                for (Shop shop : shopRepository.list()){
 //                    System.out.println(shop.getName() + " " + shop.getLocation());
 //                }
                 break;
             case 3:
                 String shopName = getShopName();
-//                shopRepository.findShop(shopName);
+//                shopRepository.find(shopName);
                 break;
             case 4:
                 shopName = getShopName();

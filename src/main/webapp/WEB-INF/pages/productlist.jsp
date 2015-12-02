@@ -12,16 +12,18 @@
     <title> Shoplist </title>
 </head>
 <body BGCOLOR="#ffffcc">
-<h2> shops list </h2>
-<table>
-    <c:forEach var="shop" items="${shops}">
+<h2> products list </h2>
+<table border="1">
+    <c:forEach var="product" items="${products}">
         <tr>
-            <td><a href="view?id=${shop.id}">${shop.name}</a></td>
-            <td>${shop.location}</td>
+            <td><a href="view?id=${product.id}">${product.name}</a></td>
+            <td>${product.brand}</td>
+            <td>${product.amount}</td>
+            <td>${product.amount_type}</td>
         </tr>
     </c:forEach>
     <tr>
-        <td><a href="create">Add a new shop</a> </td>
+        <td><a href="create">Add a new product</a> </td>
     </tr>
 </table>
 

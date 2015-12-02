@@ -23,27 +23,27 @@ public class ShopListController {
 
         @RequestMapping(value = "/list", method = RequestMethod.GET)
         public String list(Model model) {
-            model.addAttribute("shops", shopDAO.shopList());
+            model.addAttribute("shops", shopDAO.list());
             return "shoplist";
         }
 
         @RequestMapping(value = "/view", method = RequestMethod.GET)
         public String view(@RequestParam("id")String id, Model model){
-            Shop shop = shopDAO.findShop(Integer.parseInt(id));
+            Shop shop = shopDAO.find(Integer.parseInt(id));
             model.addAttribute("shop", shop);
             return "viewShop";
         }
 
         @RequestMapping(value = "/update", method = RequestMethod.GET)
         public String update(@RequestParam("id")String id, Model model){
-            Shop shop = shopDAO.findShop(Integer.parseInt(id));
+            Shop shop = shopDAO.find(Integer.parseInt(id));
             model.addAttribute("shop", shop);
             return "updateShop";
         }
 
         @RequestMapping(value = "/submitUpdate", method = RequestMethod.POST)
         public String submitUpdate(@ModelAttribute("SpringWeb")Shop shop, Model model){
-            shopDAO.updateShop(shop);
+            shopDAO.update(shop);
             model.addAttribute("name", shop.getName());
             model.addAttribute("location", shop.getLocation());
             model.addAttribute("id", shop.getId());
@@ -58,7 +58,7 @@ public class ShopListController {
 
         @RequestMapping(value = "/delete", method = RequestMethod.GET)
         public String delete(@RequestParam("id")String id, Model model){
-            Shop shop = shopDAO.findShop(Integer.parseInt(id));
+            Shop shop = shopDAO.find(Integer.parseInt(id));
             shopDAO.delete(Integer.parseInt(id));
             model.addAttribute("shop", shop);
             return "deleteShop";
