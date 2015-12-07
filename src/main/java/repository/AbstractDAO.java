@@ -3,7 +3,9 @@ package repository;
 import model.Identifiable;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -17,86 +19,31 @@ public abstract class AbstractDAO<T extends Identifiable> {
     @Autowired
     protected SessionFactory sessionFactory;
 
-    public void add(T obj)  {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.save(obj);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+    public void add(T obj) {
+        sessionFactory.getCurrentSession().save(obj);
     }
 
-    public List<T> list()  {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            return session.createCriteria(getaClass()).list();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return Collections.EMPTY_LIST;
+    public List<T> list() {
+        return sessionFactory.getCurrentSession().createCriteria(getaClass()).list();
     }
 
     public void delete(int id) {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            T result = (T) session.get(getaClass(), id);
-            if (result!=null){
-                session.delete(result);
-                session.flush();
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
+        T result = (T) sessionFactory.getCurrentSession().get(getaClass(), id);
+        if (result != null) {
+            sessionFactory.getCurrentSession().delete(result);
+            sessionFactory.getCurrentSession().flush();
         }
     }
 
     public T find(int id) {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            return (T) session.get(getaClass(), id);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return null;
+        return (T) sessionFactory.getCurrentSession().get(getaClass(), id);
     }
 
     public void update(T entity) {
-        if (entity.getId()==0){
+        if (entity.getId() == 0) {
             add(entity);
-        }
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.update(getEntityName(), entity);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
+        } else {
+            sessionFactory.getCurrentSession().update(getEntityName(), entity);
         }
     }
 

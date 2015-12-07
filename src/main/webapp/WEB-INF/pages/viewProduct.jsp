@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>The product information</h1>
-<table border>
+<table>
         <tr>
             <td>${product.name}</td>
             <td>${product.brand}</td>
