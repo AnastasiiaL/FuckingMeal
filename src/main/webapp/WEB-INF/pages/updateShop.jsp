@@ -6,13 +6,20 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Updating</title>
 </head>
 <body>
-<h1>Update/Create shop information</h1>
+<h1><c:if test="${shop.id == 0}">
+    <p>Creating shop<p>
+        </c:if>
+            <c:if test="${shop.id != 0}">
+    <p>Updating shop<p>
+        </c:if>
+
     <p>Fill in new data:</p>
 <form:form method="POST" action="submitUpdate" modelAttribute="shop">
     <table>

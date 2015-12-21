@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Кроха
@@ -18,9 +19,21 @@
     <li><p><b>Shop location: ${shop.location}</b>
     </p></li>
 </ul>
+<table border="1">
+    <c:forEach var="product" items="${shop.products}">
+        <tr>
+            <td><a href="view?id=${product.product.id}">${product.product.name}</a></td>
+            <td>${product.product.brand}</td>
+            <td>${product.product.amount}</td>
+            <td>${product.product.amount_type}</td>
+        </tr>
+    </c:forEach>
+    <tr>
+        <td><a href="product/create">Add a new product</a> </td>
+    </tr>
+</table>
 <a href="list">Back</a>
 <a href="update?id=${shop.id}">Update</a>
-<a href="">Add a product</a>
 <a href="delete?id=${shop.id}">Delete</a>
 </body>
 </html>
